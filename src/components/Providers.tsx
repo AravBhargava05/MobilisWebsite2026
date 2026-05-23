@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { CustomCursor } from "./CustomCursor";
 import { NoiseOverlay } from "./NoiseOverlay";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -39,7 +38,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
       <NoiseOverlay />
-      <CustomCursor />
       {children}
     </>
   );
