@@ -8,7 +8,7 @@ export function Work() {
       aria-labelledby="work-heading"
       className="bg-surface px-6 py-20 md:px-10 md:py-28 lg:px-14"
     >
-      <div className="mx-auto max-w-[1440px]">
+      <div className="mx-auto flex max-w-[960px] flex-col items-center text-center">
         <p className="label-caps mb-10 text-muted">03 — The Work</p>
         <h2
           id="work-heading"
@@ -22,7 +22,9 @@ export function Work() {
           alongside direct feedback from amputees throughout the process.
         </h2>
 
-        <Marquee items={[...MARQUEE_ITEMS, ...MARQUEE_ITEMS]} />
+        <div className="mt-16 w-full">
+          <Marquee items={[...MARQUEE_ITEMS, ...MARQUEE_ITEMS]} />
+        </div>
       </div>
     </section>
   );

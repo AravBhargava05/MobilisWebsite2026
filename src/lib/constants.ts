@@ -25,10 +25,10 @@ export const PRESS_LINKS = [
     href: "https://www.societyforscience.org/regeneron-sts/2024-student-finalists/arav-bhargava/",
     preview: "/images/press/regeneron-sts.png",
     previewAlt:
-      "Watercolor illustration of Arav Bhargava for the Regeneron Science Talent Search 2024 finalist profile",
-    previewAspect: "654 / 750",
+      "Watercolor illustration of Arav Bhargava with headphones and microphone for The Prosthetic Experience podcast",
     previewFit: "contain" as const,
     previewBg: "bg-white",
+    previewPadding: "2rem",
   },
 ] as const;
 

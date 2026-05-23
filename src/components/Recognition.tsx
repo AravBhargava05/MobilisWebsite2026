@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { PRESS_LINKS } from "@/lib/constants";
 
+const PREVIEW_ASPECT = "16 / 10";
+
 export function Recognition() {
   return (
     <section
@@ -15,7 +17,7 @@ export function Recognition() {
           id="recognition-heading"
           className="display-serif max-w-[18ch] text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.08] font-normal tracking-[-0.02em] text-foreground"
         >
-          Top 40, Regeneron Science Talent Search, 2024.
+          Nationally Recognized
         </h2>
 
         <p className="mt-6 max-w-xl text-[clamp(1rem,1.3vw,1.0625rem)] leading-[1.6] text-foreground/80">
@@ -26,42 +28,55 @@ export function Recognition() {
           {PRESS_LINKS.map((item) => {
             const previewBg =
               "previewBg" in item ? item.previewBg : "bg-black";
-            const previewAspect =
-              "previewAspect" in item ? item.previewAspect : "16 / 10";
             const previewFit =
               "previewFit" in item ? item.previewFit : "cover";
+            const previewPadding =
+              "previewPadding" in item ? item.previewPadding : null;
 
             return (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  item.href.startsWith("http") ? "noopener noreferrer" : undefined
-                }
-                className="group block overflow-hidden border-2 border-foreground/12 text-left transition-colors hover:border-accent"
-              >
-                <div
-                  className={`relative w-full overflow-hidden ${previewBg}`}
-                  style={{ aspectRatio: previewAspect }}
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    item.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="group block overflow-hidden border-2 border-foreground/12 text-left transition-colors hover:border-accent"
                 >
-                  <Image
-                    src={item.preview}
-                    alt={item.previewAlt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 480px"
-                    className={
-                      previewFit === "contain"
-                        ? "object-contain object-top"
-                        : "object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                    }
-                  />
-                </div>
-                <p className="mono-label px-4 py-3 text-foreground transition-colors group-hover:text-accent">
-                  {item.label}
-                </p>
-              </a>
-            </li>
+                  <div
+                    className={`relative w-full overflow-hidden ${previewBg}`}
+                    style={{ aspectRatio: PREVIEW_ASPECT }}
+                  >
+                    <div
+                      className="absolute inset-0"
+                      style={
+                        previewPadding
+                          ? { padding: previewPadding }
+                          : undefined
+                      }
+                    >
+                      <div className="relative h-full w-full">
+                        <Image
+                          src={item.preview}
+                          alt={item.previewAlt}
+                          fill
+                          sizes="(max-width: 640px) 100vw, 480px"
+                          className={
+                            previewFit === "contain"
+                              ? "object-contain object-center"
+                              : "object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <p className="mono-label px-4 py-3 text-foreground transition-colors group-hover:text-accent">
+                    {item.label}
+                  </p>
+                </a>
+              </li>
             );
           })}
         </ul>
