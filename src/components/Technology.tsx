@@ -37,7 +37,7 @@ export function Technology() {
             className="w-full bg-black"
             aria-label="Demonstration of how the Mobilis universal-fit socket adjusts and fits on-body"
           >
-            <source src="/videos/newdemo.mp4" type="video/mp4" />
+            <source src="/videos/socket-demo.mp4" type="video/mp4" />
             Your browser does not support embedded video.
           </video>
         </div>
